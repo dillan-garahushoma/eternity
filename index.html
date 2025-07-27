@@ -190,12 +190,6 @@
             padding: 0 2rem;
             position: relative;
             z-index: 3;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(15px);
-            border-radius: 30px;
-            padding: 4rem 3rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .hero h1 {
@@ -217,27 +211,6 @@
             color: var(--gray-700);
             font-weight: 400;
             line-height: 1.6;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
-            color: var(--white);
-            padding: 1.2rem 3rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px -5px rgba(245, 158, 11, 0.5);
-            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
         }
 
         /* Section Styles */
@@ -269,6 +242,7 @@
         /* Featured Projects */
         .featured {
             background: var(--gray-100);
+            margin-top: 0;
         }
 
         .project-slider {
@@ -316,13 +290,22 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(29, 78, 216, 0.8));
+            background: rgba(0, 0, 0, 0.3);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
+            z-index: 1;
         }
 
         .project-card:hover .project-image::before {
             opacity: 1;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-image {
+            transition: transform 0.4s ease;
         }
 
         .project-image-placeholder {
@@ -387,13 +370,22 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.8), rgba(29, 78, 216, 0.8));
+            background: rgba(0, 0, 0, 0.3);
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.4s ease;
+            z-index: 1;
         }
 
         .service-card:hover .service-image::before {
             opacity: 1;
+        }
+
+        .service-card:hover .service-image {
+            transform: scale(1.1);
+        }
+
+        .service-image {
+            transition: transform 0.4s ease;
         }
 
         .service-image-placeholder {
@@ -550,80 +542,11 @@
             color: var(--white);
         }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            margin-top: 3rem;
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            font-weight: 500;
-            color: var(--gray-200);
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            padding: 1rem;
-            border: 1px solid var(--gray-600);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--white);
-            font-size: 1rem;
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: var(--gray-200);
-        }
-
-        .form-group select {
-            cursor: pointer;
-        }
-
-        .form-group select option {
-            background: var(--gray-900);
-            color: var(--white);
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: var(--white);
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .submit-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-
         .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
         }
 
         .contact-item {
@@ -723,8 +646,7 @@
                 padding: 4rem 1rem;
             }
 
-            .about-content,
-            .contact-content {
+            .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -739,6 +661,11 @@
 
             .project-card {
                 flex: 0 0 280px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -795,10 +722,6 @@
         <div class="hero-content fade-in-up">
             <h1>Expert Building & Renovation Services</h1>
             <p>Your one-stop solution for construction, renovation, paving, and logistics</p>
-            <a href="#contact" class="cta-button">
-                <i class="fas fa-phone"></i>
-                Get Free Quote
-            </a>
         </div>
     </section>
 
@@ -860,15 +783,15 @@
     <section id="about" class="section">
         <div class="section-header">
             <h2 class="section-title">About ICF Projects & Logistics</h2>
-            <p class="section-subtitle">Over a decade of excellence in construction and renovation</p>
+            <p class="section-subtitle">Your satisfaction is our promise - quality construction and renovation services</p>
         </div>
         <div class="about-content">
             <div class="about-text">
-                <p>With over a decade of experience in the construction industry, ICF Projects & Logistics has established itself as a trusted name in building and renovation services. We specialize in delivering exceptional quality work for both residential and commercial projects.</p>
+                <p>At ICF Projects & Logistics, we are committed to delivering exceptional quality work for both residential and commercial projects. Our promise is your complete satisfaction through professional craftsmanship and reliable service.</p>
                 
                 <p>Our skilled team of professionals brings expertise, dedication, and attention to detail to every project, ensuring that our clients receive the highest standard of workmanship and customer satisfaction.</p>
                 
-                <p>From new construction to complete renovations, driveway paving to logistics services, we are your comprehensive solution for all construction needs.</p>
+                <p>From new construction to complete renovations, driveway paving to logistics services, we are your comprehensive solution for all construction needs. Your vision, our expertise - that's our commitment to you.</p>
             </div>
             <div class="about-image">
                 <i class="fas fa-users"></i>
@@ -877,7 +800,7 @@
         
         <div class="stats">
             <div class="stat-item">
-                <span class="stat-number">10+</span>
+                <span class="stat-number">5+</span>
                 <div class="stat-label">Years Experience</div>
             </div>
             <div class="stat-item">
@@ -1007,76 +930,42 @@
             <h2 class="section-title">Get In Touch</h2>
             <p class="section-subtitle">Ready to start your next project? Contact us today</p>
         </div>
-        <div class="contact-content">
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                <div>
+                    <h4>Phone / WhatsApp</h4>
+                    <p>081 357 0329</p>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
                 </div>
-                <div class="form-group">
-                    <label for="service">Service Needed</label>
-                    <select id="service" name="service">
-                        <option value="">Select a service</option>
-                        <option value="building">Building Construction</option>
-                        <option value="renovation">Renovation</option>
-                        <option value="paving">Driveway Paving</option>
-                        <option value="transportation">Transportation</option>
-                    </select>
+                <div>
+                    <h4>Email</h4>
+                    <p>isaacchaurira22@gmail.com</p>
                 </div>
-                <div class="form-group">
-                    <label for="message">Project Details</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Tell us about your project" required></textarea>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-clock"></i>
                 </div>
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i>
-                    Send Message
-                </button>
-            </form>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div>
-                        <h4>Phone / WhatsApp</h4>
-                        <p>081 357 0329</p>
-                    </div>
+                <div>
+                    <h4>Business Hours</h4>
+                    <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 8:00 AM - 4:00 PM</p>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div>
-                        <h4>Email</h4>
-                        <p>isaacchaurira22@gmail.com</p>
-                    </div>
+            </div>
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div>
-                        <h4>Business Hours</h4>
-                        <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 8:00 AM - 4:00 PM</p>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div>
-                        <h4>Service Area</h4>
-                        <p>Durban, KwaZulu-Natal<br>& Surrounding Areas</p>
-                    </div>
+                <div>
+                    <h4>Service Area</h4>
+                    <p>Durban, KwaZulu-Natal<br>& Surrounding Areas</p>
                 </div>
             </div>
         </div>
@@ -1118,31 +1007,6 @@
             });
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Show loading state
-            const submitBtn = document.querySelector('.submit-btn');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission
-            setTimeout(() => {
-                alert('Thank you for your message! We will get back to you within 24 hours.');
-                this.reset();
-                
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
@@ -1182,11 +1046,13 @@
         // Add hover effects to project cards
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = 'var(--shadow-lg)';
             });
             
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'var(--shadow)';
             });
         });
 
@@ -1227,36 +1093,6 @@
         if (statsSection) {
             statsObserver.observe(statsSection);
         }
-
-        // Form validation enhancement
-        const formInputs = document.querySelectorAll('.contact-form input, .contact-form textarea, .contact-form select');
-        
-        formInputs.forEach(input => {
-            input.addEventListener('focus', function() {
-                this.style.borderColor = 'var(--primary)';
-                this.style.boxShadow = '0 0 0 3px rgba(37, 99, 235, 0.1)';
-            });
-            
-            input.addEventListener('blur', function() {
-                this.style.borderColor = 'var(--gray-600)';
-                this.style.boxShadow = 'none';
-                
-                // Simple validation
-                if (this.hasAttribute('required') && !this.value.trim()) {
-                    this.style.borderColor = '#ef4444';
-                }
-            });
-        });
-
-        // Parallax effect for hero section
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                const speed = scrolled * 0.5;
-                hero.style.transform = `translateY(${speed}px)`;
-            }
-        });
 
         // Add typing effect to hero title
         function typeWriter(element, text, speed = 100) {
