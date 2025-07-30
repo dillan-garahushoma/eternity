@@ -1045,19 +1045,19 @@
             
             <div class="stats">
                 <div class="stat-item">
-                    <span class="stat-number">5+</span>
+                    <span class="stat-number" data-target="17" data-suffix="+">17+</span>
                     <div class="stat-label">Years Experience</div>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">150+</span>
+                    <span class="stat-number" data-target="150" data-suffix="+">150+</span>
                     <div class="stat-label">Projects Completed</div>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">100%</span>
+                    <span class="stat-number" data-target="100" data-suffix="%">100%</span>
                     <div class="stat-label">Client Satisfaction</div>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">24/7</span>
+                    <span class="stat-number" data-target="0" data-suffix="" data-text="24/7">24/7</span>
                     <div class="stat-label">Support Available</div>
                 </div>
             </div>
@@ -1311,20 +1311,28 @@
             });
         });
 
+        // Fixed counter animation function
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
             
             counters.forEach(counter => {
-                const target = counter.textContent;
-                const numericTarget = parseInt(target.replace(/\D/g, ''));
-                const suffix = target.replace(/[\d]/g, '');
+                const target = parseInt(counter.dataset.target);
+                const suffix = counter.dataset.suffix || '';
+                const text = counter.dataset.text;
+                
+                // If it's the 24/7 counter, just display the text directly
+                if (text) {
+                    counter.textContent = text;
+                    return;
+                }
+                
                 let count = 0;
-                const increment = numericTarget / 30;
+                const increment = target / 30;
                 
                 const timer = setInterval(() => {
                     count += increment;
-                    if (count >= numericTarget) {
-                        counter.textContent = numericTarget + suffix;
+                    if (count >= target) {
+                        counter.textContent = target + suffix;
                         clearInterval(timer);
                     } else {
                         counter.textContent = Math.floor(count) + suffix;
@@ -1506,4 +1514,4 @@
         });
     </script>
 </body>
-</html>5
+</html>
